@@ -28,3 +28,9 @@ while running:
 
     #clock tick
     clock.tick(constants.FPS)
+
+    if current_state.next_state:
+        if current_state.next_state == "quit":
+            running = False
+        elif current_state.next_state =="play":
+            current_state = states.Game()
