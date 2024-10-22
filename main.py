@@ -8,6 +8,7 @@ running = True
 current_state = states.Menu()
 clock = pygame.time.Clock()
 
+
 #game loop
 while running:
 
