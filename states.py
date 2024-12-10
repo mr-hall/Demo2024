@@ -45,6 +45,7 @@ class Menu(State):
     def render(self, window):
         #draw frame
         window.fill(constants.MENU_BACKGROUND)
+
         for button in self.buttons:
             pygame.draw.rect(window,button.colour, [button.rect.x, button.rect.y, button.rect.width, button.rect.height])
             window.blit(button.text_image, (button.rect.x, button.rect.y))
@@ -53,6 +54,7 @@ class Game(State):
     def __init__(self):
         super().__init__()
         self.player = extra.Player()
+        self.ninja = extra.Ninja()
         self.enemies = pygame.sprite.Group()
         for i in range(10):
             enemy = extra.Enemy()
@@ -63,7 +65,9 @@ class Game(State):
         window.fill((255,255,255))
         window.blit(self.player.image, self.player.rect)
         self.enemies.draw(window)
+        window.blit(self.ninja.image, self.ninja.rect)
 
     def update(self):
         self.enemies.update()
+        self.ninja.update()
         pygame.sprite.spritecollide(self.player, self.enemies, True)
